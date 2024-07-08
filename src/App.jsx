@@ -1,7 +1,16 @@
+import { Route, Routes } from "react-router-dom";
+import CreateEmployeePage from "./pages/CreateEmployeePage";
+import ListEmployeePage from "./pages/ListEmployeePage";
+import Error from "./pages/Error";
+
 function App() {
-  return <div>
-    <h1>Hello World !</h1>
-  </div>
+  return (
+    <Routes>
+      <Route path="/" element={<CreateEmployeePage />} />
+      <Route path="/" element={<ListEmployeePage />} />
+      <Route path="*" element={<Error />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
