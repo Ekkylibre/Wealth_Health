@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components';
 import DateInput from '../components/DateInput';
+import DropdownMenu from '../components/DropdownMenu'; // Importer le composant DropdownMenu
+import { departments } from '../assets/data/departments'; // Importer les options de département
+import { states } from '../assets/data/states'; // Importer les états
 
 const StyledForm = styled.form`
   /* Ajoute ici tes styles spécifiques au formulaire si nécessaire */
@@ -62,13 +65,8 @@ function CreateEmployeePage() {
 
                   <StyledFormGroup className="mb-3">
                     <label htmlFor="state" className="form-label">State</label>
-                    <select className="form-select" id="state">
-                      <option>Sales</option>
-                      <option>Marketing</option>
-                      <option>Engineering</option>
-                      <option>Human Resources</option>
-                      <option>Legal</option>
-                    </select>
+                    {/* Utiliser DropdownMenu avec les états */}
+                    <DropdownMenu options={states} />
                   </StyledFormGroup>
 
                   <StyledFormGroup className="mb-3">
@@ -79,13 +77,8 @@ function CreateEmployeePage() {
 
                 <StyledFormGroup className="mb-3">
                   <label htmlFor="department" className="form-label">Department</label>
-                  <select className="form-select" id="department">
-                    <option>Sales</option>
-                    <option>Marketing</option>
-                    <option>Engineering</option>
-                    <option>Human Resources</option>
-                    <option>Legal</option>
-                  </select>
+                  {/* Utiliser DropdownMenu avec les départements */}
+                  <DropdownMenu options={departments} />
                 </StyledFormGroup>
 
                 <button type="button" className="btn btn-primary" onClick={saveEmployee}>Save</button>
