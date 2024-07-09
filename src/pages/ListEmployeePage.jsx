@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom';
-import { format } from 'date-fns'; // Importez la fonction format de date-fns
+import { format } from 'date-fns';
 
 const columns = [
   { name: 'First Name', selector: row => row.firstName, sortable: true },
@@ -27,7 +27,7 @@ function ListEmployeePage() {
   useEffect(() => {
     const employeesData = JSON.parse(localStorage.getItem('employees')) || [];
     setEmployees(employeesData);
-    setFilteredEmployees(employeesData); // Initialise également les employés filtrés avec toutes les données
+    setFilteredEmployees(employeesData);
   }, []);
 
   const handleClearLocalStorage = () => {
@@ -40,7 +40,6 @@ function ListEmployeePage() {
     const searchTerm = e.target.value;
     setSearchTerm(searchTerm);
 
-    // Filtrer les employés en fonction du terme de recherche
     const filteredData = employees.filter(employee =>
       employee.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       employee.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -55,24 +54,30 @@ function ListEmployeePage() {
   };
 
   return (
-    <div className="container">
-      <h1>Current Employees</h1>
-      <Link to="/">Home</Link>
-      <button className="btn btn-danger mb-3" onClick={handleClearLocalStorage}>Clear Data</button>
-      
-      <input
-        type="text"
-        placeholder="Search..."
-        value={searchTerm}
-        onChange={handleSearchChange}
-        className="form-control mb-3"
-      />
-      
-      <DataTable
-        columns={columns}
-        data={filteredEmployees}
-        pagination
-      />
+    <div className="container py-4">
+      <h1 className="mb-4 text-center">Current Employees</h1>
+      <div className="row justify-content-center">
+        <div className="col-md-10">
+          <div className="text-end">
+            <Link to="/" className="btn btn-link">Home</Link>
+            <button className="btn btn-danger ms-2" onClick={handleClearLocalStorage}>Clear Data</button>
+          </div>
+          <div className="input-group mt-3 mb-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={handleSearchChange}
+            />
+          </div>
+          <DataTable
+            columns={columns}
+            data={filteredEmployees}
+            pagination
+          />
+        </div>
+      </div>
     </div>
   );
 }
