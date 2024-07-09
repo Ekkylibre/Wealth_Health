@@ -20,7 +20,7 @@ function CreateEmployeePage() {
     department: '',
   });
 
-  const [showConfirmation, setShowConfirmation] = useState(false); // État pour la modal
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -32,8 +32,8 @@ function CreateEmployeePage() {
     employees.push(newEmployee);
     localStorage.setItem('employees', JSON.stringify(employees));
 
-    setShowConfirmation(true); // Afficher la modal de confirmation
-
+    setShowConfirmation(true);
+    
     setNewEmployee({
       firstName: '',
       lastName: '',
@@ -48,7 +48,7 @@ function CreateEmployeePage() {
   };
 
   const closeConfirmation = () => {
-    setShowConfirmation(false); // Fermer la modal de confirmation
+    setShowConfirmation(false);
   };
 
   return (
@@ -61,7 +61,6 @@ function CreateEmployeePage() {
             <div className="card">
               <div className="card-body">
                 <h2 className="card-title mb-4">Create Employee</h2>
-                <StyledForm id="create-employee">
                   <div className="row g-3">
                     <div className="col-sm-6">
                       <StyledFormGroup>
@@ -128,12 +127,10 @@ function CreateEmployeePage() {
                   <div className="text-center">
                     <button type="button" className="btn btn-success" onClick={saveEmployee}>Save</button>
                   </div>
-                </StyledForm>
               </div>
             </div>
           </div>
         </div>
-        {/* Modal de confirmation */}
         {showConfirmation && (
           <StyledConfirmation>
             <span>Employee Created !</span>
@@ -146,10 +143,6 @@ function CreateEmployeePage() {
 }
 
 export default CreateEmployeePage;
-
-const StyledForm = styled.form`
-  /* Ajoute ici tes styles spécifiques au formulaire si nécessaire */
-`;
 
 const StyledFormGroup = styled.div`
   margin-bottom: 1rem;
