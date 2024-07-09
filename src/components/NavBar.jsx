@@ -9,7 +9,6 @@ const NavBar = () => {
           <Logo src="./public/Logo.png" alt="Logo" />
           <Title>Wealth Health</Title>
         </Brand>
-
         <StyledUl>
           <StyledLi>
             <Link to="/" className="nav-link">Create Employee</Link>

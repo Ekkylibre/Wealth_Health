@@ -26,7 +26,7 @@ function DateInput({ id, onChange, value }) {
 
   const handleChange = date => {
     setSelectedDate(date);
-    onChange({ target: { id, value: date } }); // Appel de onChange avec un objet similaire à un événement
+    onChange({ target: { id, value: date } });
   };
 
   return (
