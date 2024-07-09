@@ -6,6 +6,7 @@ import DropdownMenu from '../components/DropdownMenu';
 import { departments } from '../assets/data/departments';
 import { states } from '../assets/data/states';
 import NavBar from '../components/NavBar';
+import ConfirmationModal from '../components/ConfirmationModal'; // Importation du nouveau composant
 
 function CreateEmployeePage() {
   const [newEmployee, setNewEmployee] = useState({
@@ -131,12 +132,11 @@ function CreateEmployeePage() {
             </div>
           </div>
         </div>
-        {showConfirmation && (
-          <StyledConfirmation>
-            <span>Employee Created !</span>
-            <CloseButton onClick={closeConfirmation}>x</CloseButton>
-          </StyledConfirmation>
-        )}
+        <ConfirmationModal 
+          show={showConfirmation}
+          message="Employee Created !"
+          onClose={closeConfirmation}
+        />
       </div>
     </>
   );
@@ -146,27 +146,4 @@ export default CreateEmployeePage;
 
 const StyledFormGroup = styled.div`
   margin-bottom: 1rem;
-`;
-
-const StyledConfirmation = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1050;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const CloseButton = styled.button`
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
 `;
