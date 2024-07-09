@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
-const ConfirmationModal = ({ show, message, onClose }) => {
-  if (!show) return null;
+function ConfirmationModal({ show, message, onClose }) {
+    if (!show) return null;
 
-  return (
-    <ModalOverlay>
-      <ModalContent>
-        <Message>{message}</Message>
-        <CloseButton onClick={onClose}>x</CloseButton>
-      </ModalContent>
-    </ModalOverlay>
-  );
-};
+    return (
+        <ModalOverlay>
+            <ModalContent>
+                <Message>{message}</Message>
+                <CloseButton onClick={onClose}>x</CloseButton>
+            </ModalContent>
+        </ModalOverlay>
+    );
+}
 
 export default ConfirmationModal;
 
