@@ -25,7 +25,7 @@ function CreateEmployeePage() {
       <div className="row">
         <div className="col">
           <h1 className="mb-4">HRnet</h1>
-          <Link to="/employees" className="d-block mb-3">View Current Employees</Link>
+          <Link to="/ListEmployeePage" className="d-block mb-3">View Current Employees</Link>
           <div className="card">
             <div className="card-body">
               <h2 className="card-title mb-4">Create Employee</h2>
