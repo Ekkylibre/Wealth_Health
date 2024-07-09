@@ -1,19 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from 'styled-components';
 import DateInput from '../components/DateInput';
 import DropdownMenu from '../components/DropdownMenu';
 import { departments } from '../assets/data/departments';
 import { states } from '../assets/data/states';
-
-const StyledForm = styled.form`
-  /* Ajoute ici tes styles spécifiques au formulaire si nécessaire */
-`;
-
-const StyledFormGroup = styled.div`
-  margin-bottom: 1rem;
-`;
+import NavBar from '../components/NavBar';
 
 function CreateEmployeePage() {
   const [newEmployee, setNewEmployee] = useState({
@@ -60,11 +52,11 @@ function CreateEmployeePage() {
   };
 
   return (
-    <div className="container py-4">
+    <div className="container">
+      <NavBar />
       <h1 className="mb-4 text-center">HRnet</h1>
       <div className="row justify-content-center">
         <div className="col-md-8">
-          <Link to="/ListEmployeePage" className="d-block mb-3 text-center">View Current Employees</Link>
           <div className="card">
             <div className="card-body">
               <h2 className="card-title mb-4">Create Employee</h2>
@@ -133,16 +125,38 @@ function CreateEmployeePage() {
                   </div>
                 </div>
                 <div className="text-center">
-                  <button type="button" className="btn btn-primary" onClick={saveEmployee}>Save</button>
+                  <button type="button" className="btn btn-success" onClick={saveEmployee}>Save</button>
                 </div>
               </StyledForm>
             </div>
           </div>
         </div>
       </div>
-      <div id="confirmation" className="modal" style={{ display: 'none', position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: '1050', backgroundColor: 'rgba(0, 0, 0, 0.5)', color: 'white', padding: '10px 20px', borderRadius: '5px' }}>Employee Created!</div>
+      <StyledConfirmation id="confirmation">Employee Created!</StyledConfirmation>
     </div>
   );
 }
 
 export default CreateEmployeePage;
+
+
+const StyledForm = styled.form`
+  /* Ajoute ici tes styles spécifiques au formulaire si nécessaire */
+`;
+
+const StyledFormGroup = styled.div`
+  margin-bottom: 1rem;
+`;
+
+const StyledConfirmation = styled.div`
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1050;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+`;
