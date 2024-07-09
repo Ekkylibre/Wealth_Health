@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';  // Importez `isValid` pour la validation de date
 import NavBar from '../components/NavBar';
 
 const columns = [
@@ -8,13 +8,19 @@ const columns = [
   { name: 'Last Name', selector: row => row.lastName, sortable: true },
   {
     name: 'Start Date',
-    selector: row => format(new Date(row.startDate), 'dd/MM/yyyy'),
+    selector: row => {
+      const date = new Date(row.startDate);
+      return isValid(date) ? format(date, 'dd/MM/yyyy') : 'Invalid Date';
+    },
     sortable: true
   },
   { name: 'Department', selector: row => row.department, sortable: true },
   {
     name: 'Date of Birth',
-    selector: row => format(new Date(row.dateOfBirth), 'dd/MM/yyyy'),
+    selector: row => {
+      const date = new Date(row.dateOfBirth);
+      return isValid(date) ? format(date, 'dd/MM/yyyy') : 'Invalid Date';
+    },
     sortable: true
   },
   { name: 'Street', selector: row => row.street, sortable: true },

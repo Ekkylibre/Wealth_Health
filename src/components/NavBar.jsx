@@ -27,7 +27,7 @@ export default NavBar;
 
 
 const StyledNav = styled.nav`
-  background-color: #f8f9fa;
+  background-color: #bedfcf;
 `;
 
 const Container = styled.div`
