@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 function ConfirmationModal({ show, message, onClose }) {
     if (!show) return null;
@@ -28,6 +28,18 @@ const ModalOverlay = styled.div`
   z-index: 1050;
 `;
 
+// Définir l'animation de haut en bas
+const slideDown = keyframes`
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
+
 const ModalContent = styled.div`
   background-color: white;
   padding: 20px;
@@ -36,6 +48,7 @@ const ModalContent = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 300px;
+  animation: ${slideDown} 0.5s ease-out; // Appliquer l'animation ici
 `;
 
 const Message = styled.span`
