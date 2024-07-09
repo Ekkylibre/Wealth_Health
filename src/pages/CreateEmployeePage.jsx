@@ -20,6 +20,8 @@ function CreateEmployeePage() {
     department: '',
   });
 
+  const [showConfirmation, setShowConfirmation] = useState(false); // État pour la modal
+
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setNewEmployee({ ...newEmployee, [id]: value });
@@ -30,13 +32,7 @@ function CreateEmployeePage() {
     employees.push(newEmployee);
     localStorage.setItem('employees', JSON.stringify(employees));
 
-    const confirmationModal = document.getElementById('confirmation');
-    if (confirmationModal) {
-      confirmationModal.style.display = 'block';
-      setTimeout(() => {
-        confirmationModal.style.display = 'none';
-      }, 2000);
-    }
+    setShowConfirmation(true); // Afficher la modal de confirmation
 
     setNewEmployee({
       firstName: '',
@@ -49,6 +45,10 @@ function CreateEmployeePage() {
       zipCode: '',
       department: '',
     });
+  };
+
+  const closeConfirmation = () => {
+    setShowConfirmation(false); // Fermer la modal de confirmation
   };
 
   return (
@@ -133,14 +133,19 @@ function CreateEmployeePage() {
             </div>
           </div>
         </div>
-        <StyledConfirmation id="confirmation">Employee Created!</StyledConfirmation>
+        {/* Modal de confirmation */}
+        {showConfirmation && (
+          <StyledConfirmation>
+            <span>Employee Created !</span>
+            <CloseButton onClick={closeConfirmation}>x</CloseButton>
+          </StyledConfirmation>
+        )}
       </div>
     </>
   );
 }
 
 export default CreateEmployeePage;
-
 
 const StyledForm = styled.form`
   /* Ajoute ici tes styles spécifiques au formulaire si nécessaire */
@@ -151,7 +156,6 @@ const StyledFormGroup = styled.div`
 `;
 
 const StyledConfirmation = styled.div`
-  display: none;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -161,4 +165,15 @@ const StyledConfirmation = styled.div`
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const CloseButton = styled.button`
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
 `;
