@@ -10,7 +10,7 @@ const columns = [
     name: 'Start Date',
     selector: row => {
       const date = new Date(row.startDate);
-      return isValid(date) ? format(date, 'dd/MM/yyyy') : 'Invalid Date';
+      return isValid(date) ? format(date, 'dd/MM/yyyy') : null;
     },
     sortable: true
   },
@@ -19,7 +19,7 @@ const columns = [
     name: 'Date of Birth',
     selector: row => {
       const date = new Date(row.dateOfBirth);
-      return isValid(date) ? format(date, 'dd/MM/yyyy') : 'Invalid Date';
+      return isValid(date) ? format(date, 'dd/MM/yyyy') : null;
     },
     sortable: true
   },
