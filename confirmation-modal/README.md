@@ -1,0 +1,46 @@
+# Confirmation Modal Component
+
+Confirmation modal component for React using styled-components.
+
+## Installation
+
+To install the package, use npm:
+
+```bash
+npm install confirmation-modal
+```
+
+## Usage
+
+Exemple :
+
+import { useState } from 'react';
+
+``import ConfirmationModal from 'confirmation-modal';``
+
+function App() {
+    const [showModal, setShowModal] = useState(false);
+
+    return (
+        <div>
+            <button onClick={() => setShowModal(true)}>Show Modal</button>
+            <ConfirmationModal
+                show={showModal}
+                message="Are you sure you want to proceed?"
+                onClose={() => setShowModal(false)}
+            />
+        </div>
+    );
+}
+
+export default App;
+
+## Props
+
+- ``show`` : Boolean to control whether the modal is visible.
+- ``message`` : Message to display inside the modal.
+- ``onClose`` : Function to handle modal close event.
+
+## Autor
+
+Développé avec ❤️ par [Dany XIONG]([lien](https://github.com/Ekkylibre)).

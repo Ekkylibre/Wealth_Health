@@ -1,0 +1,25 @@
+{
+  "name": "confirmation-modal",
+  "version": "1.0.0",
+  "description": "Confirmation modal component for React",
+  "main": "ConfirmationModal.jsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ekkylibre/wealth_health.git"
+  },
+  "keywords": [
+    "react",
+    "modal",
+    "confirmation",
+    "styled-components"
+  ],
+  "author": "Dany XIONG",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ekkylibre/wealth_health/issues"
+  },
+  "homepage": "https://github.com/Ekkylibre/wealth_health#readme"
+}
