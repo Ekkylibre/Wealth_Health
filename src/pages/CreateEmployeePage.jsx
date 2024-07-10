@@ -6,7 +6,7 @@ import DropdownMenu from '../components/DropdownMenu';
 import { departments } from '../assets/data/departments';
 import { states } from '../assets/data/states';
 import NavBar from '../components/NavBar';
-import ConfirmationModal from '../components/ConfirmationModal'; // Importation du nouveau composant
+import ConfirmationModal from '../components/ConfirmationModal';
 
 function CreateEmployeePage() {
   const [newEmployee, setNewEmployee] = useState({
