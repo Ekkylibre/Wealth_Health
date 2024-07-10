@@ -1,6 +1,6 @@
 {
   "name": "confirmation-modal-wealth-health",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Confirmation modal component for React",
   "main": "ConfirmationModal.jsx",
   "scripts": {
