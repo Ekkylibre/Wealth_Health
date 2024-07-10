@@ -60,7 +60,7 @@ function CreateEmployeePage() {
         <div className="row justify-content-center">
           <div className="col-md-8">
             <div className="card">
-              <div className="card-body">
+              <CardBody className="card-body">
                 <h2 className="card-title mb-4">Create Employee</h2>
                   <div className="row g-3">
                     <div className="col-sm-6">
@@ -128,7 +128,7 @@ function CreateEmployeePage() {
                   <div className="text-center">
                     <button type="button" className="btn btn-success" onClick={saveEmployee}>Save</button>
                   </div>
-              </div>
+              </CardBody>
             </div>
           </div>
         </div>
@@ -146,4 +146,8 @@ export default CreateEmployeePage;
 
 const StyledFormGroup = styled.div`
   margin-bottom: 1rem;
+`;
+
+const CardBody = styled.div`
+  box-shadow: var(--bs-box-shadow) !important;
 `;
