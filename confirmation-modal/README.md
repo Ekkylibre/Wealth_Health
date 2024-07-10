@@ -7,7 +7,7 @@ Confirmation modal component for React using styled-components.
 To install the package, use npm:
 
 ```bash
-npm install confirmation-modal
+npm install confirmation-modal-wealth-health
 ```
 
 ## Usage
