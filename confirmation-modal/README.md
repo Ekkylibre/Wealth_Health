@@ -16,7 +16,7 @@ Exemple :
 ```jsx
 import { useState } from 'react';
 
-import ConfirmationModal from 'confirmation-modal';
+import ConfirmationModal from 'confirmation-modal-wealth-health';
 
 function App() {
     const [showModal, setShowModal] = useState(false);
