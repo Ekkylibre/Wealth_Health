@@ -3,6 +3,29 @@ import styled from 'styled-components';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+function DateInput({ id, onChange, value }) {
+  const [selectedDate, setSelectedDate] = useState(value ? new Date(value) : null);
+
+  const handleChange = date => {
+    setSelectedDate(date);
+    onChange({ target: { id, value: date } });
+  };
+
+  return (
+    <StyledDatePickerWrapper>
+      <StyledDatePicker
+        id={id}
+        selected={selectedDate}
+        onChange={handleChange}
+        dateFormat="dd/MM/yyyy"
+        placeholderText="dd/mm/yyyy"
+      />
+    </StyledDatePickerWrapper>
+  );
+}
+
+export default DateInput;
+
 const StyledDatePickerWrapper = styled.div`
   width: 100%;
   margin-bottom: 1rem;
@@ -20,26 +43,3 @@ const StyledDatePicker = styled(DatePicker)`
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 `;
-
-function DateInput({ id, onChange, value }) {
-  const [selectedDate, setSelectedDate] = useState(value ? new Date(value) : null);
-
-  const handleChange = date => {
-    setSelectedDate(date);
-    onChange({ target: { id, value: date } });
-  };
-
-  return (
-    <StyledDatePickerWrapper>
-      <StyledDatePicker
-        id={id}
-        selected={selectedDate}
-        onChange={handleChange}
-        dateFormat="dd/MM/yyyy"
-        placeholderText="Select a date"
-      />
-    </StyledDatePickerWrapper>
-  );
-}
-
-export default DateInput;
