@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
-import { format, isValid } from 'date-fns';  // Importez `isValid` pour la validation de date
+import { format, isValid } from 'date-fns';
 import NavBar from '../components/NavBar';
 
 const columns = [
