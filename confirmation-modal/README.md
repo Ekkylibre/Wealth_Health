@@ -13,10 +13,10 @@ npm install confirmation-modal
 ## Usage
 
 Exemple :
-
+```jsx
 import { useState } from 'react';
 
-``import ConfirmationModal from 'confirmation-modal';``
+import ConfirmationModal from 'confirmation-modal';
 
 function App() {
     const [showModal, setShowModal] = useState(false);
@@ -34,6 +34,7 @@ function App() {
 }
 
 export default App;
+```
 
 ## Props
 
