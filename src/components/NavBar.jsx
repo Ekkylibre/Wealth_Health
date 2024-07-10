@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const NavBar = () => {
@@ -11,10 +11,10 @@ const NavBar = () => {
         </Brand>
         <StyledUl>
           <StyledLi>
-            <Link to="/" className="nav-link">Create Employee</Link>
+            <StyledNavLink exact to="/" activeClassName="active">Create Employee</StyledNavLink>
           </StyledLi>
           <StyledLi>
-            <Link to="/ListEmployeePage" className="nav-link">Current Employees</Link>
+            <StyledNavLink to="/ListEmployeePage" activeClassName="active">Current Employees</StyledNavLink>
           </StyledLi>
         </StyledUl>
       </Container>
@@ -23,7 +23,6 @@ const NavBar = () => {
 }
 
 export default NavBar;
-
 
 const StyledNav = styled.nav`
   background-color: #bedfcf;
@@ -41,7 +40,7 @@ const Logo = styled.img`
   max-height: 50px;
 `;
 
-const Brand = styled(Link)`
+const Brand = styled(NavLink)`
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -62,14 +61,25 @@ const StyledUl = styled.ul`
 
 const StyledLi = styled.li`
   margin-left: 10px;
+`;
 
-  .nav-link {
+const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+  color: #000;
+  position: relative;
+
+  &:hover {
     text-decoration: none;
-    color: #000;
-    position: relative;
+  }
 
-    &:hover {
-      text-decoration: underline;
+  &.active {
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -2px;
+      background-color: #000;
     }
   }
 `;
