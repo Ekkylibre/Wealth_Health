@@ -11,10 +11,10 @@ const NavBar = () => {
         </Brand>
         <StyledUl>
           <StyledLi>
-            <StyledNavLink exact to="/" activeClassName="active">Create Employee</StyledNavLink>
+            <StyledNavLink exact='true' to="/" activeclassname="active">Create Employee</StyledNavLink>
           </StyledLi>
           <StyledLi>
-            <StyledNavLink to="/ListEmployeePage" activeClassName="active">Current Employees</StyledNavLink>
+            <StyledNavLink to="/ListEmployeePage" activeclassname="active">Current Employees</StyledNavLink>
           </StyledLi>
         </StyledUl>
       </Container>
