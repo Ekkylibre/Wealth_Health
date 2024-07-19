@@ -25,7 +25,7 @@ function App() {
 
     return (
         <div>
-            <button onClick={handleOpenModal}>Show Modal</button>
+            <button onClick={handleOpenModal}>Save</button>
             <ConfirmationModal
                 show={showModal}
                 message="Employee Created !"
