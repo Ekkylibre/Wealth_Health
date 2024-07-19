@@ -15,19 +15,21 @@ npm install confirmation-modal-wealth-health
 Exemple :
 ```jsx
 import { useState } from 'react';
-
 import ConfirmationModal from 'confirmation-modal-wealth-health';
 
 function App() {
     const [showModal, setShowModal] = useState(false);
 
+    const handleOpenModal = () => setShowModal(true);
+    const handleCloseModal = () => setShowModal(false);
+
     return (
         <div>
-            <button onClick={() => setShowModal(true)}>Show Modal</button>
+            <button onClick={handleOpenModal}>Show Modal</button>
             <ConfirmationModal
                 show={showModal}
-                message="Are you sure you want to proceed?"
-                onClose={() => setShowModal(false)}
+                message="Employee Created !"
+                onClose={handleCloseModal}
             />
         </div>
     );
