@@ -1,7 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import DataTable from 'react-data-table-component';
 import { format, isValid } from 'date-fns';
 import NavBar from '../components/NavBar';
+import { clearEmployees } from '../redux/employeesSlice';
+import { selectFilteredEmployees } from '../selectors/employeeSelectors';
 
 const columns = [
   { name: 'First Name', selector: row => row.firstName, sortable: true },
@@ -30,37 +33,16 @@ const columns = [
 ];
 
 function ListEmployeePage() {
-  const [employees, setEmployees] = useState([]);
-  const [filteredEmployees, setFilteredEmployees] = useState([]);
+  const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState('');
-
-  useEffect(() => {
-    const employeesData = JSON.parse(localStorage.getItem('employees')) || [];
-    setEmployees(employeesData);
-    setFilteredEmployees(employeesData);
-  }, []);
+  const filteredEmployees = useSelector(state => selectFilteredEmployees(state, searchTerm));
 
   const handleClearLocalStorage = () => {
-    localStorage.removeItem('employees');
-    setEmployees([]);
-    setFilteredEmployees([]);
+    dispatch(clearEmployees());
   };
 
   const handleSearchChange = (e) => {
-    const searchTerm = e.target.value;
-    setSearchTerm(searchTerm);
-
-    const filteredData = employees.filter(employee =>
-      employee.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      employee.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      employee.department.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      employee.street.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      employee.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      employee.state.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      employee.zipCode.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    setFilteredEmployees(filteredData);
+    setSearchTerm(e.target.value);
   };
 
   return (
