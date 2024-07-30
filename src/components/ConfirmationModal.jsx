@@ -1,16 +1,16 @@
 import styled, { keyframes } from 'styled-components';
 
-function ConfirmationModal({ show, message, onClose }) {
-    if (!show) return null;
+function ConfirmationModal({ show, message, onClose, closeButtonText, overlayStyle, contentStyle, messageStyle, closeButtonStyle }) {
+  if (!show) return null;
 
-    return (
-        <ModalOverlay>
-            <ModalContent>
-                <Message>{message}</Message>
-                <CloseButton onClick={onClose}>x</CloseButton>
-            </ModalContent>
-        </ModalOverlay>
-    );
+  return (
+    <ModalOverlay style={overlayStyle}>
+      <ModalContent style={contentStyle}>
+        <Message style={messageStyle}>{message}</Message>
+        <CloseButton onClick={onClose} style={closeButtonStyle}>{closeButtonText}</CloseButton>
+      </ModalContent>
+    </ModalOverlay>
+  );
 }
 
 export default ConfirmationModal;
@@ -28,7 +28,6 @@ const ModalOverlay = styled.div`
   z-index: 1050;
 `;
 
-// Définir l'animation de haut en bas
 const slideDown = keyframes`
   from {
     transform: translateY(-100%);

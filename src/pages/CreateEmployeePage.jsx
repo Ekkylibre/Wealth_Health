@@ -31,11 +31,13 @@ function CreateEmployeePage() {
     setNewEmployee({ ...newEmployee, [id]: value });
   };
 
+  const handleDropdownChange = (id, value) => {
+    setNewEmployee({ ...newEmployee, [id]: value });
+  };
+
   const saveEmployee = () => {
     dispatch(addEmployee(newEmployee));
-  
     setShowConfirmation(true);
-  
     setNewEmployee({
       firstName: '',
       lastName: '',
@@ -48,7 +50,6 @@ function CreateEmployeePage() {
       department: '',
     });
   };
-  
 
   const closeConfirmation = () => {
     setShowConfirmation(false);
@@ -147,7 +148,7 @@ function CreateEmployeePage() {
                             <DropdownMenu
                               options={states}
                               id="state"
-                              onChange={handleInputChange}
+                              onChange={(e) => handleDropdownChange('state', e.target.value)}
                               value={newEmployee.state}
                               placeholder='Select'
                             />
@@ -175,7 +176,7 @@ function CreateEmployeePage() {
                       <DropdownMenu
                         options={departments}
                         id="department"
-                        onChange={handleInputChange}
+                        onChange={(e) => handleDropdownChange('department', e.target.value)}
                         value={newEmployee.department}
                         placeholder='Select'
                       />
@@ -191,8 +192,13 @@ function CreateEmployeePage() {
         </div>
         <ConfirmationModal
           show={showConfirmation}
-          message="Employee Created!"
+          message="Employee Created !"
           onClose={closeConfirmation}
+          closeButtonText='x'
+          overlayStyle={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
+          contentStyle={{ padding: '30px', borderRadius: '10px' }}
+          messageStyle={{ fontSize: '1.2rem' }}
+          closeButtonStyle={{ fontSize: '1rem', color: 'red' }}
         />
       </div>
     </>
