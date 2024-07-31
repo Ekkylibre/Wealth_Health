@@ -7,8 +7,8 @@ import DropdownMenu from '../components/DropdownMenu';
 import { departments } from '../assets/data/departments';
 import { states } from '../assets/data/states';
 import NavBar from '../components/NavBar';
-import ConfirmationModal from '../components/ConfirmationModal';
 import { addEmployee } from '../redux/employeesSlice';
+import ConfirmationModal from 'confirmation-modal-wealth-health';
 
 function CreateEmployeePage() {
   const dispatch = useDispatch();
