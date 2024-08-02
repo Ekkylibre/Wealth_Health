@@ -9,18 +9,7 @@ import { states } from '../assets/data/states';
 import NavBar from '../components/NavBar';
 import { addEmployee } from '../redux/employeesSlice';
 import ConfirmationModal from 'confirmation-modal-wealth-health';
-
-const initialEmployeeState = {
-  firstName: '',
-  lastName: '',
-  dateOfBirth: '',
-  startDate: '',
-  street: '',
-  city: '',
-  state: '',
-  zipCode: '',
-  department: '',
-};
+import { initialEmployeeState } from '../utils/initialEmployeeState';
 
 function CreateEmployeePage() {
   const dispatch = useDispatch();

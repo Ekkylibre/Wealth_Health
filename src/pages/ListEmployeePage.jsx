@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import DataTable from 'react-data-table-component';
 import NavBar from '../components/NavBar';
 import { clearEmployees } from '../redux/employeesSlice';
-import { selectFilteredEmployees } from '../selectors/employeeSelectors';
+import { selectFilteredEmployees } from '../utils/employeeSelectors';
 import { columns } from '../utils/columns';
 
 function ListEmployeePage() {
