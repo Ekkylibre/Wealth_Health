@@ -1,4 +1,3 @@
-// src/selectors/employeeSelectors.js
 import { createSelector } from 'reselect';
 
 const selectEmployees = (state) => state.employees;

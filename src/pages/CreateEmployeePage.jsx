@@ -10,20 +10,21 @@ import NavBar from '../components/NavBar';
 import { addEmployee } from '../redux/employeesSlice';
 import ConfirmationModal from 'confirmation-modal-wealth-health';
 
+const initialEmployeeState = {
+  firstName: '',
+  lastName: '',
+  dateOfBirth: '',
+  startDate: '',
+  street: '',
+  city: '',
+  state: '',
+  zipCode: '',
+  department: '',
+};
+
 function CreateEmployeePage() {
   const dispatch = useDispatch();
-  const [newEmployee, setNewEmployee] = useState({
-    firstName: '',
-    lastName: '',
-    dateOfBirth: '',
-    startDate: '',
-    street: '',
-    city: '',
-    state: '',
-    zipCode: '',
-    department: '',
-  });
-
+  const [newEmployee, setNewEmployee] = useState(initialEmployeeState);
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleInputChange = (e) => {
@@ -38,17 +39,7 @@ function CreateEmployeePage() {
   const saveEmployee = () => {
     dispatch(addEmployee(newEmployee));
     setShowConfirmation(true);
-    setNewEmployee({
-      firstName: '',
-      lastName: '',
-      dateOfBirth: '',
-      startDate: '',
-      street: '',
-      city: '',
-      state: '',
-      zipCode: '',
-      department: '',
-    });
+    setNewEmployee(initialEmployeeState);
   };
 
   const closeConfirmation = () => {
@@ -192,7 +183,7 @@ function CreateEmployeePage() {
         </div>
         <ConfirmationModal
           show={showConfirmation}
-          message="Employee Created !"
+          message="Employee Created!"
           onClose={closeConfirmation}
           closeButtonText='x'
           overlayStyle={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
@@ -205,8 +196,6 @@ function CreateEmployeePage() {
   );
 }
 
-export default CreateEmployeePage;
-
 const StyledFormGroup = styled.div`
   margin-bottom: 1rem;
 `;
@@ -214,3 +203,5 @@ const StyledFormGroup = styled.div`
 const CardBody = styled.div`
   box-shadow: var(--bs-box-shadow) !important;
 `;
+
+export default CreateEmployeePage;

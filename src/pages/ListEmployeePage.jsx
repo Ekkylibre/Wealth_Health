@@ -1,36 +1,10 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import DataTable from 'react-data-table-component';
-import { format, isValid } from 'date-fns';
 import NavBar from '../components/NavBar';
 import { clearEmployees } from '../redux/employeesSlice';
 import { selectFilteredEmployees } from '../selectors/employeeSelectors';
-
-const columns = [
-  { name: 'First Name', selector: row => row.firstName, sortable: true },
-  { name: 'Last Name', selector: row => row.lastName, sortable: true },
-  {
-    name: 'Start Date',
-    selector: row => {
-      const date = new Date(row.startDate);
-      return isValid(date) ? format(date, 'dd/MM/yyyy') : null;
-    },
-    sortable: true
-  },
-  { name: 'Department', selector: row => row.department, sortable: true },
-  {
-    name: 'Date of Birth',
-    selector: row => {
-      const date = new Date(row.dateOfBirth);
-      return isValid(date) ? format(date, 'dd/MM/yyyy') : null;
-    },
-    sortable: true
-  },
-  { name: 'Street', selector: row => row.street, sortable: true },
-  { name: 'City', selector: row => row.city, sortable: true },
-  { name: 'State', selector: row => row.state, sortable: true },
-  { name: 'Zip Code', selector: row => row.zipCode, sortable: true },
-];
+import { columns } from '../utils/columns';
 
 function ListEmployeePage() {
   const dispatch = useDispatch();
@@ -53,7 +27,9 @@ function ListEmployeePage() {
         <div className="row justify-content-center">
           <div className="col-md-10">
             <div className="text-end">
-              <button className="btn btn-danger ms-2" onClick={handleClearLocalStorage}>Clear Data</button>
+              <button className="btn btn-danger ms-2" onClick={handleClearLocalStorage}>
+                Clear Data
+              </button>
             </div>
             <div className="input-group mt-3 mb-3">
               <input
