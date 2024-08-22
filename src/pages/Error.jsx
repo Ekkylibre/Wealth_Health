@@ -2,10 +2,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 
-const ErrorContainer = styled.div`
-  margin-top: 5rem;
-`;
-
 function Error() {
   return (
     <>
@@ -26,5 +22,9 @@ function Error() {
     </>
   );
 }
+
+const ErrorContainer = styled.div`
+  margin-top: 5rem;
+`;
 
 export default Error;

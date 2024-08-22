@@ -7,23 +7,13 @@ import DropdownMenu from '../components/DropdownMenu';
 import { departments } from '../assets/data/departments';
 import { states } from '../assets/data/states';
 import NavBar from '../components/NavBar';
-import ConfirmationModal from '../components/ConfirmationModal';
 import { addEmployee } from '../redux/employeesSlice';
+import ConfirmationModal from 'confirmation-modal-wealth-health';
+import { initialEmployeeState } from '../utils/initialEmployeeState';
 
 function CreateEmployeePage() {
   const dispatch = useDispatch();
-  const [newEmployee, setNewEmployee] = useState({
-    firstName: '',
-    lastName: '',
-    dateOfBirth: '',
-    startDate: '',
-    street: '',
-    city: '',
-    state: '',
-    zipCode: '',
-    department: '',
-  });
-
+  const [newEmployee, setNewEmployee] = useState(initialEmployeeState);
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleInputChange = (e) => {
@@ -31,24 +21,15 @@ function CreateEmployeePage() {
     setNewEmployee({ ...newEmployee, [id]: value });
   };
 
+  const handleDropdownChange = (id, value) => {
+    setNewEmployee({ ...newEmployee, [id]: value });
+  };
+
   const saveEmployee = () => {
     dispatch(addEmployee(newEmployee));
-  
     setShowConfirmation(true);
-  
-    setNewEmployee({
-      firstName: '',
-      lastName: '',
-      dateOfBirth: '',
-      startDate: '',
-      street: '',
-      city: '',
-      state: '',
-      zipCode: '',
-      department: '',
-    });
+    setNewEmployee(initialEmployeeState);
   };
-  
 
   const closeConfirmation = () => {
     setShowConfirmation(false);
@@ -147,7 +128,7 @@ function CreateEmployeePage() {
                             <DropdownMenu
                               options={states}
                               id="state"
-                              onChange={handleInputChange}
+                              onChange={(e) => handleDropdownChange('state', e.target.value)}
                               value={newEmployee.state}
                               placeholder='Select'
                             />
@@ -175,7 +156,7 @@ function CreateEmployeePage() {
                       <DropdownMenu
                         options={departments}
                         id="department"
-                        onChange={handleInputChange}
+                        onChange={(e) => handleDropdownChange('department', e.target.value)}
                         value={newEmployee.department}
                         placeholder='Select'
                       />
@@ -193,13 +174,16 @@ function CreateEmployeePage() {
           show={showConfirmation}
           message="Employee Created!"
           onClose={closeConfirmation}
+          closeButtonText='x'
+          overlayStyle={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
+          contentStyle={{ padding: '30px', borderRadius: '10px' }}
+          messageStyle={{ fontSize: '1.2rem' }}
+          closeButtonStyle={{ fontSize: '1rem', color: 'red' }}
         />
       </div>
     </>
   );
 }
-
-export default CreateEmployeePage;
 
 const StyledFormGroup = styled.div`
   margin-bottom: 1rem;
@@ -208,3 +192,5 @@ const StyledFormGroup = styled.div`
 const CardBody = styled.div`
   box-shadow: var(--bs-box-shadow) !important;
 `;
+
+export default CreateEmployeePage;
