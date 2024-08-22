@@ -172,7 +172,7 @@ function CreateEmployeePage() {
         </div>
         <ConfirmationModal
           show={showConfirmation}
-          message="Employee Created!"
+          message="Employee Created !"
           onClose={closeConfirmation}
           closeButtonText='x'
           overlayStyle={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
